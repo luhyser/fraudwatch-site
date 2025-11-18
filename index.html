@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FraudWatch — Real-Time Scam Alerts Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f5f7ff;
+        animation: fadeIn .5s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+        background: #1b3cef;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: 25px;
+        padding: 25px;
+    }
+
+    .blog-post {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .blog-post:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .sidebar {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        height: fit-content;
+    }
+
+    .ad-box {
+        background: #ededed;
+        border: 2px dashed #ccc;
+        border-radius: 12px;
+        text-align: center;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    /* Full article page */
+    #articlePage {
+        display: none;
+        padding: 30px;
+        animation: fadeIn .5s ease;
+    }
+
+    #articleContent {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        line-height: 1.6;
+    }
+
+    #backBtn {
+        background: #1b3cef;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        background: #1b3cef;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    @media(max-width: 900px) {
+        .container {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>🚨 FraudWatch — Real-Time Scam Alerts & Fraud Prevention</header>
+
+<!-- HOME PAGE -->
+<div id="homePage">
+<div class="container">
+
+    <div>
+
+        <div class="ad-box">HOME PAGE AD — Paste AdSense Code</div>
+
+        <div class="blog-post" onclick="openArticle('bank')">
+            <h2>New Fake Bank Verification Scam</h2>
+            <p>Learn how scammers impersonate banks through SMS and email…</p>
+        </div>
+
+        <div class="blog-post" onclick="openArticle('crypto')">
+            <h2>Crypto Scam Surge — Protect Yourself</h2>
+            <p>Fake coins, fake exchanges, and “double your money” traps…</p>
+        </div>
+
+        <div class="blog-post" onclick="openArticle('support')">
+            <h2>Fake Customer Support Scams Explained</h2>
+            <p>How fraudsters fake caller ID and steal your info…</p>
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <h3>Trending</h3>
+        <ul>
+            <li>Fake CashApp Support</li>
+            <li>Crypto AI Bots Scam</li>
+            <li>Package Delivery Scam</li>
+        </ul>
+
+        <div class="ad-box">SIDEBAR AD SLOT</div>
+    </div>
+
+</div>
+</div>
+
+<!-- ARTICLE PAGE -->
+<div id="articlePage">
+    <button id="backBtn" onclick="goHome()">⬅ Back to Articles</button>
+    <div id="articleContent"></div>
+    <div class="ad-box">ARTICLE BOTTOM AD — Paste AdSense Code</div>
+</div>
+
+<footer>© 2025 FraudWatch Blog — Stay Safe, Stay Aware</footer>
+
+<script>
+/* LONG ARTICLE CONTENTS */
+const articles = {
+    bank: `
+        <h1>Fake Bank Verification Scam — FULL BREAKDOWN</h1>
+        <p><strong>This scam is one of the most widespread banking threats in 2025.</strong></p>
+
+        <h2>🔹 How It Starts</h2>
+        <p>You receive a text message that says something like:</p>
+        <blockquote>"Your Bank of America account is locked. Verify immediately."</blockquote>
+        <p>It contains a link that looks real, but actually points to a phishing website.</p>
+
+        <h2>🔹 What Happens If You Click</h2>
+        <ul>
+            <li>Your username & password are stolen</li>
+            <li>Scammers attempt to drain your bank account</li>
+            <li>They may lock you out by changing your password</li>
+        </ul>
+
+        <h2>🔹 How to Protect Yourself</h2>
+        <p>Never click a link sent by “your bank” unless you requested it. Always call the official bank number instead.</p>
+
+        <h2>🔹 Why It Works</h2>
+        <p>This scam uses urgency & fear. People react before they think.</p>
+    `,
+
+    crypto: `
+        <h1>Crypto Scam Explosion — Full Guide</h1>
+        <p>Cryptocurrency scams are up over 240% since last year.</p>
+
+        <h2>🔹 Types of Crypto Scams</h2>
+        <ul>
+            <li>Fake investment platforms</li>
+            <li>“AI trading bots” that don’t exist</li>
+            <li>Fake coins & fake presales</li>
+            <li>Impersonations of influencers</li>
+        </ul>
+
+        <h2>🔹 How They Steal Your Money</h2>
+        <p>You deposit crypto, then the platform shows “fake profits.”  
+        When you try to withdraw — they ask for more fees or block you entirely.</p>
+
+        <h2>🔹 How to Stay Safe</h2>
+        <p>Only use crypto platforms listed on official exchange lists.  
+        Never trust promised guaranteed returns.</p>
+    `,
+
+    support: `
+        <h1>Fake Customer Support Scams — Full Breakdown</h1>
+        <p>Scammers pretend to be Amazon, Microsoft, Apple, or PayPal support.</p>
+
+        <h2>🔹 How They Trick You</h2>
+        <p>They spoof caller-ID so it looks like an official number.</p>
+
+        <h2>🔹 Their Goal</h2>
+        <ul>
+            <li>Get remote access to your device</li>
+            <li>Install malware</li>
+            <li>Steal accounts & bank info</li>
+        </ul>
+
+        <h2>🔹 Signs It’s Fake</h2>
+        <ul>
+            <li>The call was unexpected</li>
+            <li>They request personal info</li>
+            <li>They ask you to install an app</li>
+        </ul>
+
+        <h2>🔹 What To Do</h2>
+        <p>Hang up immediately. Call the real support number from the company website.</p>
+    `
+};
+
+/* SWITCH TO ARTICLE VIEW */
+function openArticle(key) {
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("articlePage").style.display = "block";
+    document.getElementById("articleContent").innerHTML = articles[key];
+}
+
+/* GO BACK HOME */
+function goHome() {
+    document.getElementById("homePage").style.display = "block";
+    document.getElementById("articlePage").style.display = "none";
+}
+</script>
+
+</body>
+</html>
